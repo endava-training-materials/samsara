@@ -20,12 +20,7 @@ public class TestLoginPage {
 	private static Logger log = Logger.getLogger(TestLoginPage.class);//
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-
-//	@BeforeTest
-//	@Parameters({ "browser" })
+	@Parameters({ "browser" })
 	public void setUp(String browser) {
 		loginPage = Utils.setUpWebBrowser(browser);
 	}
@@ -39,17 +34,14 @@ public class TestLoginPage {
 		log.info("Open Endava training web site");
 		log.debug("Open Endava training web site");
 
-		loginPage = new LoginPage(new ChromeDriver());
 		loginPage.open();
 		new WebDriverWait(loginPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(loginPage.getLoginButton()));
 	}
-
 
 	@AfterMethod
 	public void tearDown() {
 		if (loginPage != null)
 			loginPage.quit();
 	}
-
 }

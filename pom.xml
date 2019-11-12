@@ -44,10 +44,6 @@
   	
   <build>
   	<resources>
-  		<resource>
-				<directory>src/main/java/com/endavatraining/util</directory>
-				<filtering>true</filtering>
-			</resource>
 		<resource>
 			<directory>src/test/resources</directory>
 			<filtering>true</filtering>

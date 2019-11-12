@@ -10,7 +10,7 @@ import com.endavatraining.pages.HomePage;
 
 public class LoginPage extends BasePage {
 
-	private final String ENDAVATRAINING_URL = "http://172.17.167.71:9010";
+	private final String ENDAVATRAINING_URL = "http://localhost:9010";
 	private static Logger log = Logger.getLogger(LoginPage.class);//
 
 	private By loginButton = By.xpath("//input[@value='Log In']");

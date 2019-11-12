@@ -24,12 +24,7 @@ public class TestHomePage {
 	private static Logger log = Logger.getLogger(TestHomePage.class);
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-
-//	@BeforeTest
-//	@Parameters({ "browser" })
+	@Parameters({ "browser" })
 	public void setUp(String browser) {
 		loginPage = Utils.setUpWebBrowser(browser);
 	}
@@ -39,11 +34,9 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testIsHomePageAvailable() {
-		loginPage = new LoginPage(new ChromeDriver());
 		homePage = loginPage.openAs(username, password);
 		assert homePage.isWelcomeTextPresent() : "Welcome text is not present";
 	}
-
 
 	@AfterMethod
 	public void tearDown() {
@@ -53,5 +46,4 @@ public class TestHomePage {
 		if (homePage != null)
 			homePage.quit();
 	}
-
 }
