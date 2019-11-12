@@ -11,11 +11,13 @@ import com.endavatraining.pages.HomePage;
 public class LoginPage extends BasePage {
 
 	private final String ENDAVATRAINING_URL = "http://localhost:9010";
+	public final String WRONG_CREDENTIALS_MESSAGE = "Invalid username and password.";
 	private static Logger log = Logger.getLogger(LoginPage.class);//
 
 	private By loginButton = By.xpath("//input[@value='Log In']");
 	private By userName = By.xpath("//input[@name='username']");
 	private By password = By.xpath("//input[@name='password']");
+	public By invalidCredentialsLabel = By.className("alert");
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -43,5 +45,13 @@ public class LoginPage extends BasePage {
 		driver.findElement(this.loginButton).click();
 		
 		return new HomePage(driver);		
+	}
+
+	public String enterWrongCredentials(String username, String password) {
+		driver.findElement(this.userName).sendKeys(username);
+		driver.findElement(this.password).sendKeys(password);
+
+		driver.findElement(this.loginButton).click();
+		return driver.findElement(invalidCredentialsLabel).getText();
 	}
 }
