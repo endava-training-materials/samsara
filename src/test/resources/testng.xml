@@ -3,14 +3,20 @@
 <suite name="Suite">
   <test thread-count="5" name="TestLoginPage">
   	<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="com.endavatraining.TestLoginPage" />
-		</classes>
+	<classes>
+	  <class name="com.endavatraining.TestLoginPage" />
+	</classes>
   </test>
   <test thread-count="5" name="TestHomePage">
   	<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="com.endavatraining.TestHomePage" />
-		</classes>
-  </test> 
-</suite> <!-- Suite -->
+	<classes>
+	  <class name="com.endavatraining.TestHomePage" />
+	</classes>
+  </test>
+  <!--test thread-count="5" name="RESTClient">
+    <parameter name="browser" value="firefox" />
+	<classes>
+	  <class name="com.endavatraining.RESTClient" />
+	</classes>
+  </test-->
+</suite>
