@@ -49,7 +49,7 @@ public class TestLoginPage {
 
         loginPage.open();
         String error_label = loginPage.enterWrongCredentials("user", "wrongPassword");
-        Assert.assertEquals(loginPage.WRONG_CREDENTIALS_MESSAGE, error_label);
+        Assert.assertEquals(error_label, loginPage.WRONG_CREDENTIALS_MESSAGE);
     }
 
 	@AfterMethod

@@ -11,7 +11,7 @@ import com.endavatraining.pages.HomePage;
 public class LoginPage extends BasePage {
 
 	private final String ENDAVATRAINING_URL = "http://localhost:9010";
-	public final String WRONG_CREDENTIALS_MESSAGE = "Invalid username and password";
+	public final String WRONG_CREDENTIALS_MESSAGE = "Invalid username and password.";
 	private static Logger log = Logger.getLogger(LoginPage.class);//
 
 	private By loginButton = By.xpath("//input[@value='Log In']");
