@@ -3,10 +3,6 @@ package com.endavatraining.pages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.endavatraining.pages.HomePage;
 
 public class LoginPage extends BasePage {
 
@@ -32,26 +28,39 @@ public class LoginPage extends BasePage {
 	}
 
 	public By getLoginButton() {
-
 		return loginButton;
-
 	}
 
-	public HomePage openAs(String username, String password){
-		open();
-		driver.findElement(this.userName).sendKeys(username);
-		driver.findElement(this.password).sendKeys(password);
-		
+	public void clickLoginButton() {
 		driver.findElement(this.loginButton).click();
+	}
+
+	public void enterUsername(String username) {
+		driver.findElement(this.userName).sendKeys(username);
+	}
+
+	public void enterPassword(String password) {
+		driver.findElement(this.password).sendKeys(password);
+	}
+
+	public String getErrorMessageText() {
+		return driver.findElement(invalidCredentialsLabel).getText();
+	}
+
+	public HomePage openAs(String username, String password) {
+		open();
+		enterUsername(username);
+		enterPassword(password);
+		clickLoginButton();
 		
 		return new HomePage(driver);		
 	}
 
 	public String enterWrongCredentials(String username, String password) {
-		driver.findElement(this.userName).sendKeys(username);
-		driver.findElement(this.password).sendKeys(password);
+		enterUsername(username);
+		enterPassword(password);
+		clickLoginButton();
 
-		driver.findElement(this.loginButton).click();
-		return driver.findElement(invalidCredentialsLabel).getText();
+		return getErrorMessageText();
 	}
 }

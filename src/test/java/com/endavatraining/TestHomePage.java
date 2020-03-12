@@ -14,7 +14,7 @@ public class TestHomePage {
 
 	private HomePage homePage;
 	private LoginPage loginPage;
-	private String username = "user";
+	private String username = "admin";
 	private String password = "password";
 	private static Logger log = Logger.getLogger(TestHomePage.class);
 
@@ -25,12 +25,14 @@ public class TestHomePage {
 	}
 	
 	/*
-	 * Test validates that HomePage page is available
+	 * Test 1
 	 */
 	@Test
 	public void testIsHomePageAvailable() {
 		homePage = loginPage.openAs(username, password);
 		assert homePage.isWelcomeTextPresent() : "Welcome text is not present";
+		assert homePage.isStartTestingButtonPresent() : "'Start testing' button is not present";
+		assert homePage.isShareWithFriendsButtonPresent() : "'Share with friends' button is not present";
 	}
 
 	@AfterMethod

@@ -12,8 +12,6 @@ import org.testng.annotations.Test;
 import com.endavatraining.util.Utils;
 import com.endavatraining.pages.LoginPage;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class TestLoginPage {
 
 	private LoginPage loginPage;
@@ -40,7 +38,7 @@ public class TestLoginPage {
 	}
 
     /*
-     * Test validates that proper error message is displayed upon unsuccessful login
+     * Test 2
      */
     @Test
     public void testUnsuccessfulLogin() {
@@ -48,8 +46,21 @@ public class TestLoginPage {
         log.debug("Open Endava training web site");
 
         loginPage.open();
-        String error_label = loginPage.enterWrongCredentials("user", "wrongPassword");
-        Assert.assertEquals(error_label, loginPage.WRONG_CREDENTIALS_MESSAGE);
+        loginPage.clickLoginButton();
+        Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.WRONG_CREDENTIALS_MESSAGE);
+
+        loginPage.enterUsername("admin");
+		loginPage.clickLoginButton();
+		Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.WRONG_CREDENTIALS_MESSAGE);
+
+		loginPage.enterPassword("password");
+		loginPage.clickLoginButton();
+		Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.WRONG_CREDENTIALS_MESSAGE);
+
+		loginPage.enterUsername("adnim");
+		loginPage.enterPassword("password");
+		loginPage.clickLoginButton();
+		Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.WRONG_CREDENTIALS_MESSAGE);
     }
 
 	@AfterMethod

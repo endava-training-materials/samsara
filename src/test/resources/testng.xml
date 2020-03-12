@@ -13,6 +13,12 @@
 	  <class name="com.endavatraining.TestHomePage" />
 	</classes>
   </test>
+  <test thread-count="5" name="TestHeroesPage">
+    <parameter name="browser" value="chrome" />
+	<classes>
+	  <class name="com.endavatraining.TestHeroesPage" />
+	</classes>
+  </test>
   <!--test thread-count="5" name="RESTClient">
     <parameter name="browser" value="firefox" />
 	<classes>
