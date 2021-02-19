@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- monitorInterval - automatically detect changes to the configuration file and reconfigure itself (after 30s)-->
+<Configuration status="WARN" monitorInterval="30">
+
+
+  <!-- Where to log -->
+  <Appenders>
+    <!-- target="SYSTEM_OUT" : print logs to standard system output(Console) -->
+    <Console name="Console" target="SYSTEM_OUT">
+      <!-- Pattern how to print log msg  -->
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+  </Appenders>
+
+  <!-- What to log -->
+  <Loggers>
+    <!-- Define log rule for specific class/package -->
+    <!-- additivity = false means that this class will be excluded from Root rule,
+         otherwise logs will be printed twice-->
+    <Logger name="ui.com.endavatraining.util.Utils" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+
+    <!-- How to log  -->
+    <!-- Log level applicable to all classes -->
+    <!-- level= "trace" will log everything -->
+    <Root level="info">
+      <!-- Apply root level logs to what is defined in the appenders tag -->
+      <!-- ref name is case sensitive-->
+      <AppenderRef ref="Console"/>
+    </Root>
+
+  </Loggers>
+
+</Configuration>

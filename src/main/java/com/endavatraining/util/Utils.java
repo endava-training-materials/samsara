@@ -1,6 +1,7 @@
 package com.endavatraining.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,11 +14,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Utils {
 
-	private static Logger log = Logger.getLogger(Utils.class);
+	private static Logger log = LogManager.getLogger(Utils.class.getName());
 
 	/**
-	 * 
-	 * @param browser
+	 *
+	 * setup browsers driver
+	 *
+	 * @param browser - browser type (chrome or firefox)
 	 * @return LoginPage
 	 */
 	public static LoginPage setUpWebBrowser(String browser) {
@@ -27,8 +30,8 @@ public class Utils {
 			WebDriverManager.chromedriver().setup();
 			loginPage = new LoginPage(new ChromeDriver());
 		} else if (browser.equalsIgnoreCase("firefox")) {
-				WebDriverManager.firefoxdriver().setup();
-				loginPage = new LoginPage(new FirefoxDriver());
+			WebDriverManager.firefoxdriver().setup();
+			loginPage = new LoginPage(new FirefoxDriver());
 		} else
 			throw new RuntimeException();
 
@@ -37,11 +40,15 @@ public class Utils {
 
 
 	/**
-	 * @param driver
-	 * @param locator
+	 *
+	 * wait for given element to become visible, max 5 sec
+	 *
+	 * @param driver - selenium webdriver
+	 * @param locator - ui element locator
 	 */
 	public static void webDriverWait(WebDriver driver, By locator) {
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(locator));
+		new WebDriverWait(driver, 5).
+				until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 }
