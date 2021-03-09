@@ -9,9 +9,9 @@ public class MySQLDB {
 
     private static Logger log = LogManager.getLogger(MySQLDB.class.getName());
 
-    private static final String URL = "jdbc:mysql://localhost:3306/samsara_api";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD =  "root";
+    private static final String URL = "jdbc:mysql://localhost:3306/samsara";
+    private static final String USERNAME = "admin";
+    private static final String PASSWORD =  "admin";
 
 
     /**
