@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,7 +29,9 @@ public class Utils {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			loginPage = new LoginPage(new ChromeDriver());
+			ChromeOptions option = new ChromeOptions();
+			option.addArguments("--disable-dec-shm-usage");
+			loginPage = new LoginPage(new ChromeDriver(option));
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			loginPage = new LoginPage(new FirefoxDriver());
