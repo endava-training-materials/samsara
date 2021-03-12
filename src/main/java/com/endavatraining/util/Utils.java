@@ -29,9 +29,7 @@ public class Utils {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions option = new ChromeOptions();
-			option.addArguments("--headless");
-			loginPage = new LoginPage(new ChromeDriver(option));
+			loginPage = new LoginPage(new ChromeDriver());
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			loginPage = new LoginPage(new FirefoxDriver());
