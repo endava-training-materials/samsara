@@ -30,8 +30,6 @@ public class Utils {
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions option = new ChromeOptions();
-			option.addArguments("--no-sandbox");
-			option.addArguments("--disable-dec-shm-usage");
 			option.addArguments("--headless");
 			loginPage = new LoginPage(new ChromeDriver(option));
 		} else if (browser.equalsIgnoreCase("firefox")) {
