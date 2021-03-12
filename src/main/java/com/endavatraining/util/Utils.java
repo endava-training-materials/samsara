@@ -29,7 +29,11 @@ public class Utils {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			loginPage = new LoginPage(new ChromeDriver());
+			ChromeOptions option = new ChromeOptions();
+			// run in headless mode
+			log.debug("Running test in headless mode.");
+			option.addArguments("--headless");
+			loginPage = new LoginPage(new ChromeDriver(option));
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			loginPage = new LoginPage(new FirefoxDriver());
