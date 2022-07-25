@@ -47,8 +47,9 @@ public class TestHomePage {
 		);
 
 		log.info("Success: Welcome text is present on a home page.");
+		log.info("===================");
 		log.info("Success:");
-		log.info("_________________");
+		log.info("===================");
 	}
 
 	@AfterMethod
