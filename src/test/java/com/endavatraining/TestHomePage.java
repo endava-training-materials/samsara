@@ -36,6 +36,8 @@ public class TestHomePage {
 	public void testIsHomePageAvailable() {
 
 		log.info("Log in to Endava training web site.");
+		
+		log.info("Log in checkout headless_mode.");
 
 		homePage = loginPage.openAs(USERNAME, PASSWORD);
 
